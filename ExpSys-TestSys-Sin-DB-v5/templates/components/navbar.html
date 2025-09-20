@@ -1,0 +1,108 @@
+<nav
+	id="navbar-container"
+	class="bg-blue-500 shadow-md py-4 px-6 flex justify-center relative"
+>
+	<div class="flex justify-between items-center w-full max-w-7xl">
+		<!-- Logo -->
+		<a href="/" class="flex items-center">
+			<img
+				src="{{ url_for('static', filename='images/Wordmark-logo.png') }}"
+				alt="Logo"
+				class="h-10 w-auto mr-2"
+			/>
+		</a>
+
+		<!-- Botón hamburguesa -->
+		<button id="menu-toggle" class="text-white text-2xl focus:outline-none" type="button">
+			☰
+		</button>
+
+		<!-- Enlaces escritorio -->
+		<ul class="custom-flex items-center space-x-6">
+			<li>
+				<a
+					href="/upload-word"
+					class="nav-link px-3 py-2 text-white hover:text-blue-200 transition"
+					>
+					Subir Plantilla
+				</a>
+			</li>
+			<li>
+				<a
+					href="/upload-excel"
+					class="nav-link px-3 py-2 text-white hover:text-blue-200 transition"
+					>
+					Subir Excel
+				</a>
+			</li>
+			<li>
+				<a
+					href="/excel-preview"
+					class="nav-link px-3 py-2 text-white hover:text-blue-200 transition"
+					>
+					Ver Excel
+				</a>
+			</li>
+			<li>
+				<a
+					href="/excel-reports"
+					class="nav-link px-3 py-2 text-white hover:text-blue-200 transition"
+					>
+					Ver Informes
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+<!-- Sidebar desde la derecha -->
+<div id="sidebar" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+	<div
+		class="w-60 bg-blue-500 h-full shadow-lg absolute right-0 top-0 animate-slide-in-right"
+		id="sidebar-menu"
+	>
+		<!-- Botón cerrar -->
+		<button
+			id="close-sidebar"
+			class="absolute top-4 right-4 text-white text-2xl"
+			type="button"
+		>
+			&times;
+		</button>
+
+		<ul class="space-y-6 mt-10">
+			<li>
+				<a	
+					href="/upload-word"
+					class="nav-link text-white hover:text-blue-200"
+					>
+					Subir Plantilla
+				</a>
+			</li>
+			<li>
+				<a
+					href="/upload-excel"
+					class="nav-link text-white hover:text-blue-200"
+					>
+					Subir Excel
+				</a>
+			</li>
+			<li>
+				<a
+					href="/excel-preview"
+					class="nav-link text-white hover:text-blue-200"
+					>
+					Ver Excel
+				</a>
+			</li>
+			<li>
+				<a
+					href="/excel-reports"
+					class="nav-link text-white hover:text-blue-200"
+					>
+					Ver Informes
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>

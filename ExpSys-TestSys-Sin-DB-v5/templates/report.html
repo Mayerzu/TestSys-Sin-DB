@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Informe</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="{{ url_for('static', filename='images/Wordmark-logo.png') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/report.css') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="{{ url_for('static', filename='js/navbar.js') }}"
+			type="module"
+		></script>
+		<script
+			src="{{ url_for('static', filename='js/report.js') }}"
+			type="module"
+		></script>
+	</head>
+	<body class="animate__animated animate__fadeIn">
+		{% include 'components/navbar.html' with context %}
+
+		<main>
+			{% if data %}
+			<div class="report-container" data-mode="reading">
+				<div class="header-title">
+					<h1 id="report-title">{{ data.name }}</h1>
+
+					<button id="btn-generate-report" type="button">
+						{% include 'icons/report_file_icon.html' with context %}
+						Generar Informe
+					</button>
+				</div>
+
+				<section class="tab-content" id="perfil">
+					<div class="info-grid">
+						<div class="item">
+							<div class="box-user i-1">
+								{% include 'icons/report/name_icon.html' with context %}
+								<div>
+									<h2>Nombre:</h2>
+									<input readonly value="{{ data.name }}" placeholder="Nombre" type="text" name="name" id="name" />
+								</div>
+							</div>
+							<div class="box-user">
+								{% include 'icons/report/date_icon.html' with context %}
+								<div>
+									<h2>Edad:</h2>
+									<input readonly value="{{ data.age }}" placeholder="Edad" type="text" name="age" id="age" />
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<div class="i-1 box-user">
+								{% include 'icons/report/date_icon.html' with context %}
+								<div>
+									<h2>Fecha de Evaluación:</h2>
+									<input readonly value="{{ data.evaluation_date }}" placeholder="Fecha de evaluación" type="text" name="evaluation_date" id="evaluation_date" />
+								</div>
+							</div>
+
+							<div class="box-user">
+								{% include 'icons/report/phone_icon.html' with context %}
+								<div>
+									<h2>Teléfono:</h2>
+									<input readonly value="{{ data.phone }}" placeholder="Teléfono" type="text" name="phone" id="phone" />
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="item i-2 box-user">
+						{% include 'icons/report/email_icon.html' with context %}
+						<div id="email-box">
+							<h2>Correo Electrónico:</h2>
+							<input readonly value="{{ data.email }}" placeholder="Correo electrónico" type="text" name="email" id="email" />
+						</div>
+					</div>
+				</section>
+
+				<section class="tab-content">
+					<div id="fortress" class="title-fortress">
+						{% include 'icons/report/areas_icon.html' with context %}
+						<div class="areas">
+							<h2>Áreas de Fortaleza</h2>
+							<div class="tags">
+								<span class="tag green">{{ data.top_areas[0] }}</span>
+								<span class="tag blue">{{ data.top_areas[1] }}</span>
+								<span class="tag orange">{{ data.top_areas[2] }}</span>
+							</div>
+						</div>
+
+						<button id="btn-edit-areas" title="Editar areas" type="button">
+							{% include 'icons/report/edit_icon.html' with context %}
+						</button>
+					</div>
+
+					<div class="skills">
+						<div id="skill-1">
+							<p>{{ data.top_areas[0] }}</p>
+							<span>{{ data.percentages[0] }}%</span>
+						</div>
+						<div class="bar">
+							<div
+								class="fill green-bar"
+								style="width: {{ data.percentages[0] }}%"
+							></div>
+						</div>
+
+						<div id="skill-2">
+							<p>{{ data.top_areas[1] }}</p>
+							<span>{{ data.percentages[1] }}%</span>
+						</div>
+						<div class="bar">
+							<div
+								class="fill blue-bar"
+								style="width: {{ data.percentages[1] }}%"
+							></div>
+						</div>
+
+						<div id="skill-3">
+							<p>{{ data.top_areas[2] }}</p>
+							<span>{{ data.percentages[2] }}%</span>
+						</div>
+						<div class="bar">
+							<div
+								class="fill orange-bar"
+								style="width: {{ data.percentages[2] }}%"
+							></div>
+						</div>
+					</div>
+				</section>
+
+				<section class="tab-content" id="recommendations">
+					<div class="title">
+						{% include 'icons/report/careers_icon.html' with context %}
+						<h2>Carreras Sugeridas</h2>
+
+						<button id="btn-edit-careers" title="Editar carreras" type="button">
+							{% include 'icons/report/edit_icon.html' with context %}
+						</button>
+					</div>
+
+					<div class="careers" id="recommendations-box">
+						{% for career in data.recommendations %}
+						<div>
+							{% include 'icons/check_icon.html' with context %}
+							<p>{{ career }}</p>
+						</div>
+						{% endfor %}
+					</div>
+				</section>
+			</div>
+
+			<button
+				title="Editar informe"
+				id="btn-edit-report"
+				type="button"
+				>
+				{% include 'icons/edit_icon.html' with context %}
+			</button>
+
+			<script>
+				const data = {{ data | tojson }};
+				const folder = {{ folder | tojson }}
+			</script>
+
+			<div class="hidden modal" id="modal">
+				<div class="modal-content">
+					<button class="btn-close-modal" onclick="this.closest('.modal').classList.add('hidden')" type="button">
+						{% include 'icons/close_icon.html' with context %}
+					</button>
+					<div id="box-areas">
+						<label for="areas">
+							{% include 'icons/report/areas_icon.html' with context %}
+							Áreas de Fortaleza
+						</label>
+						<textarea
+							placeholder="Ingresar las áreas separadas por una coma ➡ Cálculo, Persuasivo..."
+							name="areas"
+							id="areas"
+						>
+						</textarea>
+					</div>
+					<div id="box-careers">
+						<label for="careers">
+							{% include 'icons/report/careers_icon.html' with context %}
+							Carreras Sugeridas
+						</label>
+						<textarea
+							placeholder="Ingresar las carreras separadas por una coma ➡ Ingeniería en Sistemas, Lic. Psícología..."
+							name="careers"
+							id="careers"
+						>
+						</textarea>
+					</div>
+				</div>
+			</div>
+
+			{% else %}
+			<p
+				id="message"
+				class="text-center text-gray-500 text-lg mt-4 mb-4 center-v"
+			>
+				No hay resultados
+			</p>
+			{% endif %}
+		</main>
+	</body>
+</html>

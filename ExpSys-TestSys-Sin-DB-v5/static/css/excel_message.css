@@ -1,0 +1,22 @@
+@import url('./general.css');
+
+h1 {
+    font-size: clamp(1.5rem, 5vw, 30px) !important;
+    font-weight: bold !important;
+    transition: all .3s ease !important;
+    text-align: center !important;
+}
+
+#upload-link {
+    display: block;
+    color: #16a43a;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 10px;
+
+    &:hover {
+        color: rgb(21 128 61);
+        text-align: center;
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Datos del Excel</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="{{ url_for('static', filename='images/Wordmark-logo.png') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/excel_preview.css') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="{{ url_for('static', filename='js/excel_preview.js') }}"
+			type="module"
+		></script>
+		<script
+			src="{{ url_for('static', filename='js/navbar.js') }}"
+			type="module"
+		></script>
+	</head>
+	<body class="animate__animated animate__fadeIn">
+		{% include 'components/navbar.html' with context %}
+
+		<main>
+			<div id="box">
+				<div id="excel-menu">
+					<div class="menu-box">
+						<label id="menu-label">
+							<input type="checkbox" id="active-menu" />
+							Filtro
+							{% include 'icons/menu_icon.html' with context %}
+						</label>
+
+						<div class="menu">
+							<ul>
+								<li data-filter="date">Fecha</li>
+								<li data-filter="name">Nombre</li>
+								<li data-filter="email">Correo</li>
+							</ul>
+						</div>
+					</div>
+
+					<input
+						id="input-search"
+						data-filter="name"
+						type="search"
+						name="param"
+						autocomplete="on"
+						placeholder="Buscar por nombre..."
+					/>
+
+					<button id="btn-search" type="button">
+						{% include 'icons/search_icon.html' with context %}
+					</button>
+				</div>
+
+				<button id="btn-generate-report" type="button">
+					{% include 'icons/report_file_icon.html' with context %}
+					Generar Informes
+					<span>(0)</span>
+				</button>
+			</div>
+			
+			<div class="tooltip hidden"></div>
+			
+			<section class="box-table hidden animate__animated animate__fadeIn">
+				<table>
+					<thead></thead>
+					<tbody></tbody>
+				</table>
+			</section>
+		</main>
+		
+		<p 
+			class="message hidden animate__animated animate__fadeIn"
+			>
+			No hay registros
+		</p>
+
+		{% include 'components/loader.html' with context %}
+	</body>
+</html>

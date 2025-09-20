@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Informes</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="{{ url_for('static', filename='images/Wordmark-logo.png') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/reports.css') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="{{ url_for('static', filename='js/navbar.js') }}"
+			type="module"
+		></script>
+		<script
+			src="{{ url_for('static', filename='js/reports.js') }}"
+			type="module"
+		></script>
+	</head>
+	<body class="min-h-screen flex flex-col animate__animated animate__fadeIn">
+		{% include 'components/navbar.html' with context %}
+
+		<div class="report-container">
+			<div class="title-box">
+				<h1>Informes generados</h1>
+
+				<div id="search-input-container">
+					<div class="search-box">
+						<div class="info-icon-box">
+							{% include 'icons/info_icon.html' with context %}
+						</div>
+						<input type="search" placeholder="Buscar..." id="search-input">
+						<button id="btn-search" type="button">
+							{% include 'icons/search_icon.html' with context %}
+						</button>
+					</div>
+
+					<p id="info-message"></p>
+				</div>
+
+				<div id="reports-opcion">
+					<div class="labels-box">
+						<label>
+							<input id="input-word-option" type="radio" name="file_type" data-type="word" checked />
+							WORD
+						</label>
+
+						<label>
+							<input id="input-pdf-option" type="radio" name="file_type" data-type="pdf" />
+							PDF
+						</label>
+					</div>
+
+					<button id="btn-convert" type="button">Convertir a PDF</button>
+				</div>
+			</div>
+
+			<div
+				class="files-box"
+				id="word-files"
+				>
+				<section>
+					<div class="title">
+						<h2>WORD (0)</h2>
+	
+						<a
+							href="{{ url_for('download_filtered_files', filetype='word') }}"
+							id="btn-download-filtered-words"
+						>
+							{% include 'icons/download_icon.html' with context %}
+							Descargar todo
+						</a>
+	
+						<a
+							href="{{ url_for('download_all', folder='docs', filetype='word') }}"
+							id="btn-download-all-words"
+						>
+							{% include 'icons/download_icon.html' with context %}
+							Descargar todo
+						</a>
+					</div>
+	
+					<ul></ul>
+				</section>
+
+				<p class="message center-abs hidden">
+					No hay informes disponibles por el momento.
+				</p>
+				
+				{% include 'components/reports_modal.html' with context %}
+			</div>
+
+			<div
+				class="files-box"
+				id="pdf-files"
+				>
+				<section>
+					<div class="title">
+						<h2 id="pdf-title">PDF (0)</h2>
+
+						<a
+							href="{{ url_for('download_filtered_files', filetype='pdf') }}"
+							id="btn-download-filtered-pdfs"
+						>
+							{% include 'icons/download_icon.html' with context %}
+							Descargar todo
+						</a>
+
+						<a
+							href="{{ url_for('download_all', folder='pdfs', filetype='pdf') }}"
+							id="btn-download-all-pdfs"
+						>
+							{% include 'icons/download_icon.html' with context %}
+							Descargar todo
+						</a>
+					</div>
+
+					<ul></ul>
+				</section>
+
+				{% include 'components/reports_modal.html' with context %}
+
+				<p class="message center-abs hidden">
+					No hay informes disponibles por el momento.
+				</p>
+			</div>
+		</div>
+
+		{% include 'components/loader.html' with context %}
+
+		<script>
+			const folders = {{ folders | tojson }};
+		</script>
+	</body>
+</html>

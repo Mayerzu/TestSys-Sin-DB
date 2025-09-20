@@ -1,0 +1,25 @@
+<button
+	class="btn-delete-icon"
+	onclick="this.nextElementSibling.classList.remove('hidden')"
+	type="button"
+	>
+	{% include 'icons/delete_icon.html' with context %}
+</button>
+
+<div class="modal-box hidden">
+	<div class="modal-content">
+		<img class="warning-icon" src="{{ url_for('static', filename='images/warning-icon.png') }}" alt="Advertencia">
+
+		<h4 class="text">¿Seguro que quieres eliminar todos los archivos?</h4>
+
+		<button class="btn-close-modal" onclick="this.closest('.modal-box').classList.add('hidden')" type="button">
+			{% include 'icons/close_icon.html' with context %}
+		</button>
+
+		<button
+			class="btn-delete-files"
+			type="button"
+			>Eliminar
+		</button>
+	</div>
+</div>

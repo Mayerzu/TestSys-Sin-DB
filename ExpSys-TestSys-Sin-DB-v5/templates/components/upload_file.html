@@ -1,0 +1,65 @@
+<div
+	class="upload-container"
+	{% if selector_id  %} id="{{ selector_id }}" {% endif %}
+	>
+	<div class="box-title">
+		<h1>{{ title }}</h1>
+		
+		{% if modal_button  %} {{ modal_button | safe }} {% endif %}
+	</div>
+
+	<p class="subtext">
+		Arrastra y suelta tu archivo o haz clic para seleccionarlo
+	</p>
+
+	<div class="upload-box" id="drop-area">
+		<!-- Vista inicial -->
+		<div id="file-trigger">
+			<div class="upload-initial" id="initial-view">
+				<div class="upload-icon">
+					{% include 'icons/upload_icon.html' with context %}
+				</div>
+
+				<p class="main-text">Arrastra tu archivo {{ file_type.title() }} aquí</p>
+
+				<p class="sublink">o haz clic para buscar</p>
+
+				<p class="info">
+					Solo archivos {{ extension }}
+					{% if max_file_size %} (máximo {{ max_file_size }}) {% endif %}
+				</p>
+			</div>
+		</div>
+
+		<!-- Vista después de subir -->
+		<div class="uploaded-file hidden" id="file-view">
+			<div class="file-details">
+				<div class="file-icon">
+					{% include 'icons/file_icon.html' with context %}
+				</div>
+
+				<div class="name-size">
+					<strong id="file-name">Archivo.docx</strong>
+					<small id="file-size">0.00 MB</small>
+				</div>
+
+				<button class="btn-upload" type="button">
+					{% include 'icons/upload_file_icon.html' with context %} Subir
+				</button>
+			</div>
+			<br />
+
+			<button id="btn-change-upload" type="button">Elegir nuevo archivo</button>
+		</div>
+
+		<input type="file" id="file-input" accept="{{ extension }}" hidden />
+	</div>
+
+	<p class="formats">
+		Formatos aceptados: {{ extension }}
+		{% if file_type.lower() == 'excel' %} <br/> {% endif %}
+		{% if file_description %} ({{ file_description }}) {% endif %}
+		<br />
+		{% if max_file_size %} Tamaño máximo: {{ max_file_size }} {% endif %}
+	</p>
+</div>

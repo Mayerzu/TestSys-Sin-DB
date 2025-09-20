@@ -1,0 +1,460 @@
+@import url('./general.css');
+
+.message {
+   color: #000;
+   font-size: 1.2rem;
+   font-weight: 500;
+}
+
+.btn-delete-icon {
+   position: fixed;
+   bottom: 20px;
+   right: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 40px;
+   height: 40px;
+   background-color: red;
+   border-radius: 50%;
+   padding: 5px;
+   transition: all .3s;
+
+   &:hover {
+      background-color: rgb(211, 8, 8);
+   }
+
+   svg {
+      width: 20px;
+      height: 20px;
+   }
+}
+
+.center-abs {
+   position: absolute;
+   top: 55%;
+   left: 50%;
+   transform: translate(-50%, -55%);
+}
+
+.search-box {
+   width: 100%;
+   box-shadow: var(--shadow);
+   height: 42px;
+   border-radius: 40px;
+   overflow: hidden;
+   position: relative;
+   background-color: #fff;
+
+   input {
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      padding: 0 10px;
+   }
+
+   .info-icon-box,
+   button {
+      background-color: #2d99ff;
+      width: 50px;
+      min-width: 40px;
+      height: 100%;
+
+      svg {
+         width: 25px;
+         height: 25px;
+         margin: auto;
+
+         * {
+            stroke: #fff;
+         }
+      }
+   }
+
+   .info-icon-box svg {
+      margin-left: 9px;
+   }
+
+   button svg {
+      margin-right: 8px !important;
+   }
+}
+
+#search-input-container {
+   position: relative;
+   width: 100%;
+   max-width: 430px;
+
+   #info-message {
+      display: block;
+      position: absolute;
+      top: 42px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff !important;
+      border: 1px solid silver;
+      color: gray;
+      padding: 10px 15px;
+      width: 100%;
+      max-width: 350px;
+
+      span:first-child {
+         margin-top: 10px;
+      }
+
+      span {
+         color: #000;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+      }
+
+      svg {
+         width: 20px;
+         min-width: 20px;
+         height: 20px;
+
+         * {
+            stroke: gray;
+         }
+      }
+   }
+}
+
+.report-container {
+   padding: 30px 20px;
+
+   .files-box {
+      &>p {
+         background-color: var(--bg-body);
+      }
+
+      li {
+         background-color: #fff;
+         padding: 0 4px;
+         border: 1px solid #e7e4e4;
+         border-radius: 0.5rem;
+         box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05)
+      }
+   }
+
+   .title-box,
+   .labels-box,
+   .title-box div {
+      display: flex;
+      align-items: center;
+   }
+
+   .title-box>div:not(.search-box) {
+      gap: 15px 20px;
+   }
+
+   .labels-box {
+      gap: 15px;
+      border: 1px solid gray;
+      padding: 8px;
+      border-radius: 5px;
+
+      label {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 10px;
+         flex-wrap: wrap;
+      }
+
+      label,
+      input {
+         cursor: pointer;
+      }
+   }
+
+   .title-box {
+      gap: 20px 50px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      min-height: 40px;
+
+      label {
+         cursor: pointer;
+         font-size: 14.67px;
+      }
+   }
+
+   #btn-convert {
+      padding: 8px 13px;
+      background-color: #007fff;
+      color: #fff;
+      border-radius: 5px;
+      min-height: 40px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all .3s ease;
+   }
+
+   h1 {
+      text-align: center;
+      font-weight: bold;
+      font-size: clamp(1.3rem, 4vw, 1.5rem);
+   }
+
+   .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+      font-weight: bold;
+
+      h2 {
+         background-color: #DBEAFE;
+         color: #2563EB;
+         padding: 3px 15px;
+         border-radius: 15px;
+         font-size: 14px;
+      }
+
+      #pdf-title {
+         background-color: #FAD4D4;
+         color: #EB2525;
+      }
+
+      a {
+         background-color: rgb(17, 116, 255);
+         color: #fff;
+         text-decoration: none;
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         border-radius: 5px;
+         padding: 5px 10px;
+         transition: all .3s ease;
+
+         &:hover {
+            background-color: rgb(7, 95, 217);
+         }
+
+         svg {
+            width: 25px;
+            height: 30px;
+
+            * {
+               stroke-width: 2.5;
+            }
+         }
+      }
+   }
+
+   ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 10px;
+      list-style: none;
+      padding-bottom: 45px;
+
+      li {
+         display: flex;
+         align-items: center;
+         gap: 10px;
+         padding: 0 7px !important;
+
+         &:hover {
+            box-shadow: 0px 5px 10px #ddd;
+         }
+
+         .file-info {
+            width: 100%;
+            padding: 7px 0;
+            height: fit-content;
+            cursor: pointer;
+            user-select: none;
+
+            p {
+               font-size: 15px !important;
+               white-space: nowrap;
+               overflow: hidden;
+               text-overflow: ellipsis;
+               min-width: 100%;
+               max-width: calc(310px - 69px - 59px - 14px);
+            }
+
+            span {
+               color: gray;
+               font-size: 14px !important;
+            }
+         }
+
+         .files-icons {
+            display: grid;
+            place-items: center;
+            gap: 4px;
+            height: 100%;
+            padding: 7px 0;
+         }
+
+         a svg,
+         button svg {
+            width: 20px;
+            height: 20px;
+         }
+
+         a {
+            text-decoration: none;
+            color: black;
+            padding: 1px;
+
+            svg {
+               width: 23px;
+               height: 23px;
+
+               * {
+                  stroke: #242124c1;
+               }
+            }
+         }
+
+         a,
+         button {
+            border-radius: 3px;
+
+            &:hover {
+               background-color: #f4f4f5;
+            }
+         }
+
+         button {
+            padding: 3px;
+
+            svg * {
+               fill: #242124c1;
+            }
+         }
+
+         &>svg {
+            display: block;
+            width: 50px;
+            min-width: 50px;
+            height: 50px;
+            min-height: 50px;
+
+            * {
+               width: 100%;
+               height: 100%;
+            }
+         }
+      }
+   }
+}
+
+/* MODAL */
+.btn-delete-files {
+   background-color: red;
+   color: white;
+   border-radius: 10px;
+   padding: 5px 15px;
+   transition: all .3s ease;
+   font-weight: 500;
+
+   &:hover {
+      background-color: rgb(251, 8, 8);
+   }
+}
+
+.modal-box {
+   width: 100%;
+   min-height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background-color: rgba(0, 0, 0, 0.5);
+   padding: 15px;
+
+   .warning-icon {
+      margin-top: 10px;
+      width: 40px;
+      height: 40px;
+   }
+
+   h4 {
+      font-size: 1.2rem;
+      color: #000;
+      text-align: center;
+      font-weight: bold;
+   }
+
+   .btn-close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 25px;
+      height: 25px;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+
+      svg {
+         width: 100%;
+         height: 100%;
+      }
+   }
+
+   .modal-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
+      background-color: #fff;
+      padding: 20px;
+      opacity: 1 !important;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 10px;
+   }
+
+   .btn-delete-files {
+      transition: all .2 ease;
+      background-color: red;
+      color: #fff;
+      border-radius: 5px;
+
+      &:hover {
+         background-color: rgb(223, 12, 12);
+      }
+   }
+}
+
+#pdf-files li>svg {
+   height: 45px;
+   min-height: 45px;
+   max-height: 45px;
+}
+
+.hidden {
+   display: none !important;
+}
+
+@media(width<=768px) {
+   .report-container .files-box>p {
+      margin-top: 70px;
+   }
+}
+
+@media(width<=400px) {
+   .report-container section ul {
+      grid-template-columns: 1fr;
+
+      p {
+         white-space: wrap !important;
+         text-overflow: visible !important;
+         text-overflow: clip !important;
+      }
+   }
+}

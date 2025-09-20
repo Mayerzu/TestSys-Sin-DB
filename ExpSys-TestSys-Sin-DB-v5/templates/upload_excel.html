@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Subir Excel del Test</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="{{ url_for('static', filename='images/Wordmark-logo.png') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/upload.css') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="{{ url_for('static', filename='js/navbar.js') }}"
+			type="module"
+		></script>
+		<script
+			src="{{ url_for('static', filename='js/upload.js') }}"
+			type="module"
+		></script>
+	</head>
+	<body
+		data-page="upload-excel"
+		class="bg-gray-100 min-h-screen flex flex-col animate__animated animate__fadeIn"
+	>
+		{% include 'components/navbar.html' with context %}
+		
+		{% set selector_id = 'excel-container' %}
+		{% set title = 'Subir Excel del Test' %}
+		{% set file_type = 'excel' %}
+		{% set extension = '.xlsx' %}
+		{% set file_description = 'Excel' %}
+
+		{% include 'components/upload_file.html' with context %}
+		
+		{% include 'components/loader.html' with context %}
+	</body>
+</html>

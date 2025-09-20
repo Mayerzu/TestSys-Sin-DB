@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mensaje</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="{{ url_for('static', filename='images/Wordmark-logo.png') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/excel_message.css') }}"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="{{ url_for('static', filename='js/navbar.js') }}"
+			type="module"
+		></script>
+	</head>
+	<body class="animate__animated animate__fadeIn min-h-screen">
+		{% include 'components/navbar.html' with context %}
+
+		<main class="flex items-center justify-center h-[calc(100vh-73px)] px-4">
+			<div class="text-center">
+				<h1>{{ message }}</h1>
+				<a id="upload-link" href="{{ url_for('upload_excel') }}">Subir archivo</a>
+			</div>
+		</main>
+	</body>
+</html>

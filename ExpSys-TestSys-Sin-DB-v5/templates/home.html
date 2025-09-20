@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Bienvenida</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="{{ url_for('static', filename='images/Wordmark-logo.png') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/home.css') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="{{ url_for('static', filename='js/navbar.js') }}"
+			type="module"
+		></script>
+	</head>
+
+	<body
+		class="bg-gray-100 min-h-screen flex flex-col animate__animated animate__fadeIn"
+	>
+		{% include 'components/navbar.html' with context %}
+
+		<main
+			class="flex flex-col flex-grow justify-center animate__animated animate__fadeIn py-10"
+		>
+			<div class="text-center mb-10 px-4">
+				<h1
+					class="title font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent leading-normal"
+				>
+					Bienvenido a tu plataforma de evaluación psicológica
+				</h1>
+				<p class="sub-title mt-4 text-gray-500 max-w-2xl mx-auto">
+					Este sistema experto está diseñado para facilitar la evaluación,
+					gestión y análisis de formularios psicológicos. Comienza seleccionando
+					una de las opciones a continuación para empezar a trabajar.
+				</p>
+			</div>
+
+			<div
+				id="home-container"
+				class="gap-6 w-full max-w-6xl px-4 mx-auto"
+			>
+				<!-- Subir Plantilla -->
+				<a
+					href="{{ url_for('upload_word') }}"
+					class="bg-white shadow-md rounded-md p-6 text-center cursor-pointer hover:shadow-xl transition duration-300 h-full flex flex-col justify-between"
+				>
+					<div class="item-card">
+						<div
+							class="w-16 h-16 mx-auto flex items-center justify-center rounded-full mb-4 bg-yellow-100"
+						>
+							<i class="text-yellow-600 fas fa-upload text-2xl"></i>
+						</div>
+						<h2 class="text-xl font-semibold mb-2">Subir Plantilla</h2>
+						<p class="text-gray-600 truncate-text">
+							Sube una plantilla personalizada del informe.
+						</p>
+					</div>
+				</a>
+
+				<!-- Subir excel -->
+				<a
+					href="{{ url_for('upload_excel') }}"
+					class="bg-white shadow-md rounded-md p-6 text-center cursor-pointer hover:shadow-xl transition duration-300 h-full flex flex-col justify-between"
+				>
+					<div class="item-card">
+						<div
+							class="w-16 h-16 mx-auto flex items-center justify-center rounded-full mb-4 bg-green-100"
+						>
+							<i class="text-green-600 fas fa-file-excel text-2xl"></i>
+						</div>
+
+						<h2 class="text-xl font-semibold mb-2">Subir Excel</h2>
+						<p class="text-gray-600 truncate-text">
+							Sube un archivo excel con los datos del test.
+						</p>
+					</div>
+				</a>
+
+				<!-- Ver excel subido -->
+				<a
+					href="{{ url_for('excel_preview') }}"
+					class="bg-white shadow-md rounded-md p-6 text-center cursor-pointer hover:shadow-xl transition duration-300 h-full flex flex-col justify-between"
+				>
+					<div class="item-card">
+						<div
+							class="w-16 h-16 mx-auto flex items-center justify-center rounded-full mb-4 bg-blue-100"
+						>
+							<i class="text-blue-600 fas fa-eye text-2xl"></i>
+						</div>
+
+						<h2 class="text-xl font-semibold mb-2">Ver Excel</h2>
+						<p class="text-gray-600 truncate-text">
+							Gestionar las respuestas obtenidas en el excel.
+						</p>
+					</div>
+				</a>
+
+				<!-- Ver boletas del excel -->
+				<a
+					href="{{ url_for('excel_report_docs') }}"
+					class="bg-white shadow-md rounded-md p-6 text-center cursor-pointer hover:shadow-xl transition duration-300 h-full flex flex-col justify-between"
+				>
+					<div class="item-card">
+						<div
+							class="w-16 h-16 mx-auto flex items-center justify-center rounded-full mb-4 bg-purple-100"
+						>
+							<i class="text-purple-600 fas fa-file-invoice text-2xl"></i>
+						</div>
+
+						<h2 class="text-xl font-semibold mb-2">
+							Ver Informes
+						</h2>
+						<p class="text-gray-600 truncate-text">
+							Vizualizar informes generados en base al test.
+						</p>
+					</div>
+				</a>
+			</div>
+		</main>
+		<footer>© 2025 Universidad Dr. Andrés Bello</footer>
+	</body>
+</html>

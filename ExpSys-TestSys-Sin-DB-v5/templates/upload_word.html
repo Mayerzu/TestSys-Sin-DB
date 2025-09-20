@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Subir Plantilla del Informe</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="{{ url_for('static', filename='images/Wordmark-logo.png') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='css/upload.css') }}"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script
+			src="{{ url_for('static', filename='js/navbar.js') }}"
+			type="module"
+		></script>
+		<script
+			src="{{ url_for('static', filename='js/upload.js') }}"
+			type="module"
+		></script>
+	</head>
+	<body
+		data-page="upload-word"
+		class="min-h-screen flex flex-col animate__animated animate__fadeIn"
+		>
+		{% include 'components/navbar.html' with context %}
+
+		{% set title = 'Subir Plantilla del Informe' %}
+		{% set file_type = 'word' %}
+		{% set extension = '.docx' %}
+		{% set max_file_size = '10MB' %}
+		{% set file_description = 'Microsoft Word' %}
+
+		{% set modal_button %}
+			<button id="btn-info" type="button">
+				{% include 'icons/question_icon.html' with context %}
+			</button>
+		{% endset %}
+
+		{% include 'components/upload_file.html' with context %}
+
+		<div class="modal-box hidden">
+			<div class="modal-content">
+				<p class="modal-text">
+					Ejemplo de la estructura que debe tener la plantilla del informe
+				</p>
+
+				<button
+					class="btn-close-modal"
+					onclick="this.closest('.modal-box').classList.add('hidden')"
+					type="button"
+				>
+					{% include 'icons/close_icon.html' with context %}
+				</button>
+
+				<img
+					class="warning-icon"
+					src="{{ url_for('static', filename='images/Report-Template.png') }}"
+					alt="Formato-Plantilla"
+				/>
+			</div>
+		</div>
+	</body>
+</html>

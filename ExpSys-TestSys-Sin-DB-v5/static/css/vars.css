@@ -1,0 +1,8 @@
+:root {
+   /* --bg-body: red; */
+   --bg-body: #F3F4F6;
+   --color-body: #000000;
+   --color-secondary: #fff;
+
+   --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

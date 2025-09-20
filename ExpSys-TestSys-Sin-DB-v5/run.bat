@@ -1,0 +1,1 @@
+start cmd.exe /k "cd c:/TestSys && venv\Scripts\activate && python.exe wsgi.py"
