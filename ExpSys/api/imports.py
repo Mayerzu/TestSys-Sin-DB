@@ -1,3 +1,9 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Tus importaciones
+from services.excel.get_excel_report import get_excel_report
 from services.excel.get_excel_report import get_excel_report
 from services.excel.search_engine import excel_search_engine
 from services.excel.excel_report_generator import generate_report_from_excel
